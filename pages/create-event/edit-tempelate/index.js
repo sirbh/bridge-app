@@ -290,7 +290,7 @@ const CustomAppBar = () => {
                 </Select>
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="demo-simple-select-label">Color</InputLabel>
+                <InputLabel id="demo-simple-select-label">Select Image</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
