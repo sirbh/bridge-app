@@ -9,6 +9,7 @@ class MyDocument extends Document {
           {/* Add custom meta tags, stylesheets, or other elements here */}
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Virgilio</title>
           {/* Include external stylesheets if needed */}
           {/* <link rel="stylesheet" href="your-stylesheet.css" /> */}
         </Head>
