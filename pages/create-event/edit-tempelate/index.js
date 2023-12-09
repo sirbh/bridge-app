@@ -19,7 +19,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import AppBar from '../../../components/AppBar'
+import AppBar from "../../../components/AppBar";
+
 
 const CustomAppBar = () => {
   const router = useRouter();
@@ -36,6 +37,13 @@ const CustomAppBar = () => {
   const [dateColor, setDateColor] = useState("");
   const [locationColor, setLocationColor] = useState("");
   const [organizerColor, setOrganizerColor] = useState("");
+
+  const [telegram, setTelegram] = useState(false);
+  const [tiktok, setTiktok] = useState(false);
+  const [instagram, setInstagram] = useState(false);
+  const [linkedin, setLinkedin] = useState(false);
+  const [youtube, setYoutube] = useState(false);
+  const [snapchat, setSnapchat] = useState(false);
 
   const [modal, setModal] = useState(false);
 
@@ -67,10 +75,39 @@ const CustomAppBar = () => {
       setOrganizerColor(organizerColor);
     }
   }, [data]);
-  console.log(data);
+
+  const handleSubmit = () => {
+    const data = {
+      title,
+      description,
+      image,
+      date,
+      location,
+      organizer,
+      titleColor,
+      descriptionColor,
+      dateColor,
+      locationColor,
+      organizerColor,
+      postedTo:{
+        telegram,
+        tiktok,
+        instagram,
+        linkedin,
+        youtube,
+        snapchat
+      }
+    };
+    router.push(
+      {
+        pathname: "/create-event/manage-event",
+        query: { data: JSON.stringify(data) },
+      }
+    );
+  };
   return (
     <>
-    <AppBar/>
+      <AppBar />
       <Box
         sx={{
           width: "95vw",
@@ -130,7 +167,7 @@ const CustomAppBar = () => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -193,7 +230,7 @@ const CustomAppBar = () => {
                 />
               </Grid>
               <Grid item xs={4}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -213,7 +250,7 @@ const CustomAppBar = () => {
                 </Select>
               </Grid>
               <Grid item xs={4}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -233,7 +270,7 @@ const CustomAppBar = () => {
                 </Select>
               </Grid>
               <Grid item xs={4}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -253,7 +290,7 @@ const CustomAppBar = () => {
                 </Select>
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -367,7 +404,12 @@ const CustomAppBar = () => {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Checkbox />
+                    <Checkbox
+                      value={telegram}
+                      onChange={(e) => {
+                        setTelegram((prevValue) => !prevValue);
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={6}>
                     <Image
@@ -378,7 +420,12 @@ const CustomAppBar = () => {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Checkbox />
+                    <Checkbox
+                      value={tiktok}
+                      onChange={(e) => {
+                        setTiktok((prevValue) => !prevValue);
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={6}>
                     <Image
@@ -389,7 +436,12 @@ const CustomAppBar = () => {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Checkbox />
+                    <Checkbox
+                      value={instagram}
+                      onChange={(e) => {
+                        setInstagram((prevValue) => !prevValue);
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={6}>
                     <Image
@@ -400,7 +452,12 @@ const CustomAppBar = () => {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Checkbox />
+                    <Checkbox
+                      value={linkedin}
+                      onChange={(e) => {
+                        setLinkedin((prevValue) => !prevValue);
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={6}>
                     <Image
@@ -411,7 +468,12 @@ const CustomAppBar = () => {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Checkbox />
+                    <Checkbox
+                      value={youtube}
+                      onChange={(e) => {
+                        setYoutube((prevValue) => !prevValue);
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={6}>
                     <Image
@@ -422,10 +484,18 @@ const CustomAppBar = () => {
                     />
                   </Grid>
                   <Grid item xs={6}>
-                    <Checkbox />
+                    <Checkbox
+                      value={snapchat}
+                      onChange={(e) => {
+                        setSnapchat((prevValue) => !prevValue);
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={12}>
-                    <Button variant="contained" fullWidth>
+                    <Button variant="contained" fullWidth onClick={()=>{
+                      console.log("submit");
+                      handleSubmit()
+                    }}>
                       Share
                     </Button>
                   </Grid>

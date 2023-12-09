@@ -63,6 +63,7 @@ const CustomAppBar = () => {
           </Button>
         </Link>
       </AppBar>
+      <Typography variant="h4" textAlign={"center"} sx={{ padding: "50px 50px" }}>Select Tempalte From the Catalogue</Typography>
       <Box
         sx={{
           padding: "50px 50px",

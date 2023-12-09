@@ -21,6 +21,7 @@ import Tempalte from "../../components/Template";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Chips from "../../components/Chips";
 
 const CustomAppBar = () => {
   const [jsonData, setJsonData] = useState(null);
@@ -131,6 +132,16 @@ const CustomAppBar = () => {
       </Box>
       <Box
         sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px 40px",
+        }}
+      >
+        <Chips/>
+      </Box>
+      <Box
+        sx={{
           padding: "50px 50px",
           display: "flex",
           flexDirection: "row",
@@ -154,7 +165,7 @@ const CustomAppBar = () => {
             return (
               <Tempalte
                 key={i}
-                image={`/images/${i}.jpg`}
+                image={`/images/${Math.floor(Math.random() * 10)}.jpg`}
                 title={item.title}
                 description={item.description}
                 onClick={clickHandler}
